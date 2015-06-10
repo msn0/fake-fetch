@@ -61,7 +61,7 @@ The object to be sent as request-body.
 
 Type: `object`
 
-The object to be sent as request-body.
+Custom Response options, see [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)
 
 ## License
 MIT &copy; [Michał Jezierski](https://pl.linkedin.com/in/jezierskimichal)
