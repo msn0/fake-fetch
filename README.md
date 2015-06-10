@@ -14,18 +14,18 @@ $ npm install fake-fetch --save-dev
 var fakeFetch = require('fake-fetch');
 
 beforeEach(function () {
-	fakeFetch.install();
+  fakeFetch.install();
 });
 
 afterEach(function () {
-	fakeFetch.restore();
+  fakeFetch.restore();
 });
 
-it("get should request for users with expected data", function (done) {
+it("should fetch what you need", function (done) {
   fakeFetch.respondWith({"foo": "bar"});
 
-  fetch('users.json').then(function (data) {
-    expect(fakeFetch.getUrl()).toEqual('users.json');
+  fetch('/my-service').then(function (data) {
+    expect(fakeFetch.getUrl()).toEqual('/my-service');
     expect(fakeFetch.getMethod()).toEqual('get');
     expect(data._bodyText).toEqual('{"foo":"bar"}');
     done();
