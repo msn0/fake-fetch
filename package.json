@@ -1,6 +1,6 @@
 {
   "name": "fake-fetch",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "fake window.fetch for tests",
   "main": "index.js",
   "scripts": {
