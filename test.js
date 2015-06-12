@@ -17,7 +17,7 @@ describe('Fake window.fetch', function () {
   });
 
 
-  it('install should spy on window.fetch', function () {
+  it('install should stub window.fetch', function () {
     sinon.spy(sinon, 'stub');
 
     fakeFetch.install();
@@ -27,46 +27,46 @@ describe('Fake window.fetch', function () {
 
   it('should return request url', function () {
     fakeFetch.install();
-    window.fetch.firstCall = {
-      args: ['/foo']
-    };
+    window.fetch.firstCall = {args: ['/foo']};
 
-    assert.equal('/foo', fakeFetch.getUrl());
+    var expectedUrl = fakeFetch.getUrl();
+
+    assert.equal('/foo', expectedUrl);
   });
 
   it('should return get method by default', function () {
     fakeFetch.install();
-    window.fetch.firstCall = {
-      args: ['/foo']
-    };
+    window.fetch.firstCall = {args: ['/foo']};
 
-    assert.equal('get', fakeFetch.getMethod());
+    var expectedMethod = fakeFetch.getMethod();
+
+    assert.equal('get', expectedMethod);
   });
 
   it('should return given request method', function () {
     fakeFetch.install();
-    window.fetch.firstCall = {
-      args: ['/foo', {method: 'DELETE'}]
-    };
+    window.fetch.firstCall = {args: ['/foo', {method: 'DELETE'}]};
 
-    assert.equal('DELETE', fakeFetch.getMethod());
+    var expectedMethod = fakeFetch.getMethod();
+
+    assert.equal('DELETE', expectedMethod);
   });
 
   it('should return empty request body by default', function () {
     fakeFetch.install();
-    window.fetch.firstCall = {
-      args: ['/foo']
-    };
+    window.fetch.firstCall = {args: ['/foo']};
 
-    assert.equal('', fakeFetch.getBody());
+    var expectedBody = fakeFetch.getBody();
+
+    assert.equal('', expectedBody);
   });
 
   it('should return given request body', function () {
     fakeFetch.install();
-    window.fetch.firstCall = {
-      args: ['/foo', {body: 'foo bar'}]
-    };
+    window.fetch.firstCall = {args: ['/foo', {body: 'foo bar'}]};
 
-    assert.equal('foo bar', fakeFetch.getBody());
+    var expectedBody = fakeFetch.getBody();
+
+    assert.equal('foo bar', expectedBody);
   });
 });
