@@ -45,9 +45,15 @@ Restore `window.fetch`.
 
 #### getUrl
 
+Returns request URL.
+
 #### getMethod
 
+Returns request method. Default is 'get'.
+
 #### getBody
+
+Returns message body. Default is '' (empty string).
 
 #### respondWith(data, options)
 
