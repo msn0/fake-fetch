@@ -4,7 +4,7 @@
   "description": "fake window.fetch for tests",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/karma/bin/karma start"
   },
   "repository": {
     "type": "git",
@@ -20,9 +20,18 @@
   },
   "homepage": "https://github.com/msn0/fake-fetch",
   "dependencies": {
-    "sinon": "^1.15.1"
+    "promise": "^7.0.4",
+    "sinon": "^1.17.2",
+    "whatwg-fetch": "^0.10.1"
   },
   "devDependencies": {
-    "mocha": "^2.2.5"
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.15",
+    "karma-browserify": "^4.4.0",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-jasmine": "^0.3.6",
+    "karma-mocha-reporter": "^1.1.1",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.18"
   }
 }

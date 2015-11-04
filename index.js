@@ -27,5 +27,5 @@ module.exports.getUrl = function () {
 };
 
 module.exports.respondWith = function (data, options) {
-  return window.fetch.returns(Promise.resolve(new Response(JSON.stringify(data), options)));
+  return window.fetch.returns(Promise.resolve(new Response(data, options)));
 };

@@ -1,11 +1,14 @@
 var assert = require('assert');
-var sinon = require('sinon');
-
-var fakeFetch = require('./');
+var _sinon = require('sinon');
+var _fakeFetch = require('./');
 
 describe('Fake window.fetch', function () {
 
+  var fakeFetch, sinon;
+
   beforeEach(function () {
+    fakeFetch = _fakeFetch;
+    sinon = _sinon;
     global.window = {
       fetch: function () {
       }
@@ -14,11 +17,12 @@ describe('Fake window.fetch', function () {
 
   afterEach(function () {
     global.window = undefined;
+    window.fetch.restore();
   });
 
 
   it('install should stub window.fetch', function () {
-    sinon.spy(sinon, 'stub');
+    _sinon.spy(sinon, 'stub');
 
     fakeFetch.install();
 
