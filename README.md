@@ -78,6 +78,7 @@ preprocessors: {
   './node_modules/fake-fetch/index.js': [ 'browserify' ]
 }
 ```
+Real-life usage example can be found here [https://github.com/msn0/file-downloader/blob/master/test.js](https://github.com/msn0/file-downloader/blob/master/test.js)
 
 ## License
 MIT &copy; [Michał Jezierski](https://pl.linkedin.com/in/jezierskimichal)
