@@ -69,5 +69,15 @@ Type: `object`
 
 Custom Response options, see [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)
 
+## Remarks
+
+You may find necessary to use browserify before using fake-fetch within your specs, e.g.
+```js
+// karma.conf.js
+preprocessors: {
+  './node_modules/fake-fetch/index.js': [ 'browserify' ]
+}
+```
+
 ## License
 MIT &copy; [Michał Jezierski](https://pl.linkedin.com/in/jezierskimichal)
