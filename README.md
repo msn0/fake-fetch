@@ -13,18 +13,13 @@ $ npm install fake-fetch --save-dev
 ```js
 var fakeFetch = require('fake-fetch');
 
-beforeEach(function () {
-  fakeFetch.install();
-});
+beforeEach(fakeFetch.install);
+afterEach(fakeFetch.restore);
 
-afterEach(function () {
-  fakeFetch.restore();
-});
-
-it("should fetch what you need", function (done) {
+it("should fetch what you need", done => {
   fakeFetch.respondWith({"foo": "bar"});
 
-  fetch('/my-service').then(function (data) {
+  fetch('/my-service').then(data => {
     expect(fakeFetch.getUrl()).toEqual('/my-service');
     expect(fakeFetch.getMethod()).toEqual('get');
     expect(data._bodyText).toEqual('{"foo":"bar"}');
