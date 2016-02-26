@@ -1,14 +1,17 @@
 {
   "name": "fake-fetch",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "fake window.fetch for tests",
   "main": "index.js",
   "scripts": {
-    "test": "karma start"
+    "test": "mocha --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/msn0/fake-fetch.git"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.allegrogroup.com/artifactory/api/npm/npm-local"
   },
   "keywords": [
     "fetch"
@@ -25,13 +28,10 @@
     "whatwg-fetch": "^0.10.1"
   },
   "devDependencies": {
-    "jasmine-core": "^2.3.4",
-    "karma": "^0.13.15",
-    "karma-browserify": "^4.4.0",
-    "karma-chrome-launcher": "^0.2.1",
-    "karma-jasmine": "^0.3.6",
-    "karma-mocha-reporter": "^1.1.1",
-    "karma-phantomjs-launcher": "^0.2.1",
-    "phantomjs": "^1.9.18"
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "babel-preset-es2015": "^6.5.0",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
   }
 }
