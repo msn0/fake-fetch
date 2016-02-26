@@ -73,4 +73,34 @@ describe('Fake window.fetch', function () {
 
     assert.equal('foo bar', expectedBody);
   });
+
+  it('ss', function () {
+    fakeFetch.install();
+    for (var key in window.fetch) {
+      //console.log(key);
+    }
+
+
+    window.fetch.firstCall = {args: ['/foo', {body: 'foo bar'}]};
+
+    fetch("/test", {headers: {"accept": "*"}});
+    fetch("/foo-bar", {"method": "post"});
+
+
+//    console.log(window.fetch.getCalls());
+    //console.log(JSON.stringify(window.fetch.getCall(0)));
+    console.log(window.fetch.callCount);
+    //for (var key in window.fetch.getCall(0)) {
+//          console.log(window.fetch.getCall(0).args);
+    //    }
+//    console.log(window.fetch.getCall(1));
+
+    window.fetch.getCalls().forEach(function (call) {
+      console.log(call.args);
+    });
+
+
+    assert.equal('foo bar', 'foo bar');
+  });
+
 });
