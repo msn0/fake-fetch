@@ -1,6 +1,6 @@
 {
   "name": "fake-fetch",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "fake window.fetch for tests",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/msn0/fake-fetch",
   "dependencies": {
     "promise": "^7.0.4",
-    "sinon": "^1.17.2",
+    "sinon": "^2.0.0-pre",
     "whatwg-fetch": "^0.10.1"
   },
   "devDependencies": {
