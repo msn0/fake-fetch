@@ -1,33 +1,29 @@
-let fetchCopy;
+import deepEqual from 'deep-equal';
 
-export function install() {
-  fetchCopy = window.fetch;
-  window.fetch = function () {
-  };
-}
+export default class FakeFetch {
 
-export function restore() {
-  window.fetch = fetchCopy;
-}
+  install() {
+    this.fetchCopy = window.fetch;
+  }
 
-export function when(givenUrl) {
-  window.fetch = function (expectedUrl) {
-    if (givenUrl === expectedUrl) {
-      Promise.resolve();
-    }
+  restore() {
+    window.fetch = this.fetchCopy;
+  }
+
+  when(expectedUrl, expectedOptions) {
+    return new Promise(resolve => {
+      window.fetch = function (givenUrl, givenOptions) {
+        if (expectedUrl !== givenUrl) {
+          return;
+        }
+
+        if (!deepEqual(expectedOptions, givenOptions)) {
+          return;
+        }
+
+        resolve();
+      }
+    });
+
   }
 }
-
-class FakeFetch {
-  constructor() {
-
-  }
-}
-
-
-//fakeFetch.get('/test', {method: 'get'}).respondWith('{"foo":"bar"}');
-//fakeFetch.post('/test', {
-//  headers: {
-//    'Content-Type': 'application/json'
-//  }
-//}).respondWith('{"foo":"bar"}');

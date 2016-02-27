@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/msn0/fake-fetch",
   "dependencies": {
+    "deep-equal": "^1.0.1",
     "promise": "^7.0.4",
     "sinon": "^2.0.0-pre",
     "whatwg-fetch": "^0.10.1"
