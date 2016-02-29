@@ -2,7 +2,7 @@
   "name": "fake-fetch",
   "version": "2.0.0",
   "description": "fake window.fetch for tests",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register"
   },
@@ -24,8 +24,10 @@
   "homepage": "https://github.com/msn0/fake-fetch",
   "dependencies": {
     "deep-equal": "^1.0.1",
+    "es6-promise": "^3.1.2",
+    "isomorphic-fetch": "^2.2.1",
     "promise": "^7.0.4",
-    "sinon": "^2.0.0-pre",
+    "promise-polyfill": "^3.1.0",
     "whatwg-fetch": "^0.10.1"
   },
   "devDependencies": {

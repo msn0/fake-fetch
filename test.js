@@ -1,5 +1,6 @@
 import {expect} from 'chai';
 import FakeFetch from './index';
+import 'isomorphic-fetch';
 
 global.window = {};
 
@@ -16,6 +17,29 @@ describe('Fake Fetch', () => {
 
     expect(window.fetch).to.equal('original fetch');
   });
+
+  it("fetch should be thenable", () => {
+    fakeFetch.install();
+
+    fakeFetch.when('/foo');
+
+    expect(window.fetch('/foo')).to.have.property('then');
+  });
+
+  it("should return expected body", done => {
+    fakeFetch.install();
+    fakeFetch.when('/foo').then(respondWith => {
+      respondWith('{"foo":"bar"}');
+    });
+
+    window.fetch('/foo').then(response => {
+      expect(response.body).to.equal('{"foo":"bar"}');
+      fakeFetch.restore();
+      done();
+    });
+  });
+
+
 
   describe('when', () => {
 
