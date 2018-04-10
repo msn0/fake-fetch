@@ -19,10 +19,11 @@ afterEach(fakeFetch.restore);
 it("should fetch what you need", done => {
   fakeFetch.respondWith({"foo": "bar"});
 
-  fetch('/my-service').then(data => {
+  fetch('/my-service', {headers: new Headers({accept: 'application/json'})}).then(data => {
     expect(fakeFetch.getUrl()).toEqual('/my-service');
     expect(fakeFetch.getMethod()).toEqual('get');
     expect(data._bodyText).toEqual('{"foo":"bar"}');
+    expect(fakeFetch.getRequestHeaders()).toEqual(new Headers({accept: 'application/json'}));
     done();
   });
 });
@@ -49,6 +50,14 @@ Returns request method. Default is 'get'.
 #### getBody
 
 Returns message body. Default is '' (empty string).
+
+#### getRequestHeaders
+
+Returns request headers. Default is {} (empty object).
+
+#### getOptions
+
+Returns request options. Default is {} (empty object)
 
 #### respondWith(data, options)
 
