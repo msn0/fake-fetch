@@ -73,4 +73,50 @@ describe('Fake window.fetch', function () {
 
     assert.equal('foo bar', expectedBody);
   });
+
+  it('should return empty request headers by default', function () {
+    fakeFetch.install();
+    window.fetch.firstCall = {args: ['/foo']};
+
+    var expectedHeaders = fakeFetch.getRequestHeaders();
+
+    expect(expectedHeaders).toEqual({});
+  });
+
+  it('should return given request headers', function () {
+    fakeFetch.install();
+    var headers = new Headers({'Content-Type': 'application/json'});
+    window.fetch.firstCall = {
+      args: [
+        '/foo',
+        {headers: headers}],
+    };
+
+    var expectedHeaders = fakeFetch.getRequestHeaders();
+
+    expect(expectedHeaders).toEqual(headers)
+  });
+
+  it('should return empty options by default', function () {
+    fakeFetch.install();
+    window.fetch.firstCall = {args: ['/foo']};
+
+    var expectedOptions = fakeFetch.getOptions();
+
+    expect(expectedOptions).toEqual({});
+  });
+
+  it('should return given request options', function () {
+    fakeFetch.install();
+
+    var options = {
+      headers: new Headers({'Content-Type': 'application/json'}),
+      credentials: 'same-origin',
+    };
+    window.fetch.firstCall = {args: ['/foo', options]};
+
+    var expectedOptions = fakeFetch.getOptions();
+
+    expect(expectedOptions).toEqual(options);
+  });
 });

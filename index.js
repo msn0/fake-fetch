@@ -2,7 +2,7 @@
 
 var sinon = require('sinon');
 
-var getOptions = function () {
+module.exports.getOptions = function () {
   return window.fetch.firstCall.args[1] || {};
 };
 
@@ -15,15 +15,19 @@ module.exports.restore = function () {
 };
 
 module.exports.getMethod = function () {
-  return getOptions().method || 'get';
+  return this.getOptions().method || 'get';
 };
 
 module.exports.getBody = function () {
-  return getOptions().body || '';
+  return this.getOptions().body || '';
 };
 
 module.exports.getUrl = function () {
   return window.fetch.firstCall.args[0];
+};
+
+module.exports.getRequestHeaders = function () {
+  return this.getOptions().headers || {};
 };
 
 module.exports.respondWith = function (data, options) {
