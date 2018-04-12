@@ -4,7 +4,8 @@
   "description": "fake window.fetch for tests",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start"
+    "test": "./node_modules/karma/bin/karma start && npm run lint",
+    "lint": "eslint --fix ."
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
+    "eslint-config-helmut": "^3.0.0",
     "jasmine-core": "^3.1.0",
     "karma": "^2.0.0",
     "karma-browserify": "^5.2.0",
