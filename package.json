@@ -26,6 +26,7 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
+    "browserify": "^16.2.3",
     "eslint-config-helmut": "^3.0.0",
     "jasmine-core": "^3.1.0",
     "karma": "^2.0.0",
