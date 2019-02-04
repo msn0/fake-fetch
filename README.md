@@ -59,6 +59,10 @@ Returns request headers. Default is {} (empty object).
 
 Returns request options. Default is {} (empty object)
 
+#### called (Boolean getter)
+
+Check whether this instance of fakeFetch was ever called
+
 #### respondWith(data, options)
 
 ##### data

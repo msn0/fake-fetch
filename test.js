@@ -119,4 +119,17 @@ describe('Fake window.fetch', function () {
 
         expect(expectedOptions).toEqual(options);
     });
+
+    it('should detect fetch was not called', function () {
+        fakeFetch.install();
+
+        expect(fakeFetch.called).toBeFalsy();
+    });
+
+    it('should detect fetch was called', function () {
+        fakeFetch.install();
+        window.fetch('/foo');
+
+        expect(fakeFetch.called).toBeTruthy();
+    });
 });
