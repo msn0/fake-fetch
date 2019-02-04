@@ -1,3 +1,9 @@
 {
-  extends: ['helmut']
+  extends: ['helmut'],
+  overrides: [
+    {
+      files: [ 'test.js' ],
+      env: {mocha: true, jasmine: true},
+    }
+  ]
 }
