@@ -33,3 +33,11 @@ module.exports.getRequestHeaders = function () {
 module.exports.respondWith = function (data, options) {
     return window.fetch.returns(Promise.resolve(new Response(data, options)));
 };
+
+Object.defineProperty(
+    module.exports,
+    'called',
+    {
+        get: () => !!window.fetch.firstCall
+    }
+);
