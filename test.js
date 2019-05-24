@@ -136,19 +136,20 @@ describe('Fake window.fetch', function () {
     describe('with Request object', function () {
         it('should return request url', function () {
             fakeFetch.install();
-            const options = {
-                method: 'GET',
-                mode: 'cors',
-                cache: 'default',
-                headers: new Headers({
-                    'Content-Type': 'text/xml',
-                    'X-Test': 'foo'
-                })
-            };
+            const request = new Request('https://foo.bar/path');
 
-            window.fetch(new Request('https://foo.bar/path', options));
+            window.fetch(request);
 
-            expect(fakeFetch.getUrl()).toEqual('https://foo.bar/path');
+            expect(fakeFetch.getUrl()).toEqual(request.url);
+        });
+
+        it('should return get method by default', function () {
+            fakeFetch.install();
+            const request = new Request('https://foo.bar/path');
+
+            window.fetch(request);
+
+            expect(fakeFetch.getMethod()).toEqual(request.method);
         });
     });
 });

@@ -19,6 +19,10 @@ module.exports.restore = function () {
 };
 
 module.exports.getMethod = function () {
+    var firstArg = window.fetch.firstCall.args[0];
+    if (withRequest(firstArg)) {
+        return firstArg.method;
+    }
     return this.getOptions().method || 'get';
 };
 
