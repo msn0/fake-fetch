@@ -134,7 +134,7 @@ describe('Fake window.fetch', function () {
     });
 
     describe('with Request object', function () {
-        it('should return given request body', function () {
+        it('should return request url', function () {
             fakeFetch.install();
             const options = {
                 method: 'GET',
