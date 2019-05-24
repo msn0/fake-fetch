@@ -156,7 +156,7 @@ describe('Fake window.fetch', function () {
             fakeFetch.install();
             const request = new Request('https://foo.bar/path');
 
-            window.fetch(request);
+            window.fetch(request, { body: 'foo' });
 
             expect(fakeFetch.getBody()).toEqual(request.body);
         });
