@@ -151,5 +151,14 @@ describe('Fake window.fetch', function () {
 
             expect(fakeFetch.getMethod()).toEqual(request.method);
         });
+
+        it('should return request body', function () {
+            fakeFetch.install();
+            const request = new Request('https://foo.bar/path');
+
+            window.fetch(request);
+
+            expect(fakeFetch.getBody()).toEqual(request.body);
+        });
     });
 });
