@@ -2,6 +2,10 @@
 
 var sinon = require('sinon');
 
+function withRequest(arg) {
+    return window.Request && arg instanceof window.Request;
+}
+
 module.exports.getOptions = function () {
     return window.fetch.firstCall.args[1] || {};
 };
@@ -19,11 +23,19 @@ module.exports.getMethod = function () {
 };
 
 module.exports.getBody = function () {
+    var firstArg = window.fetch.firstCall.args[0];
+    if (withRequest(firstArg)) {
+        return firstArg.body;
+    }
     return this.getOptions().body || '';
 };
 
 module.exports.getUrl = function () {
-    return window.fetch.firstCall.args[0];
+    var firstArg = window.fetch.firstCall.args[0];
+    if (withRequest(firstArg)) {
+        return firstArg.url;
+    }
+    return firstArg;
 };
 
 module.exports.getRequestHeaders = function () {
