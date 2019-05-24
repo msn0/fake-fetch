@@ -143,7 +143,7 @@ describe('Fake window.fetch', function () {
             expect(fakeFetch.getUrl()).toEqual(request.url);
         });
 
-        it('should return get method by default', function () {
+        it('should return request method', function () {
             fakeFetch.install();
             const request = new Request('https://foo.bar/path');
 
