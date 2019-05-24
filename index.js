@@ -43,6 +43,10 @@ module.exports.getUrl = function () {
 };
 
 module.exports.getRequestHeaders = function () {
+    var firstArg = window.fetch.firstCall.args[0];
+    if (withRequest(firstArg)) {
+        return firstArg.headers;
+    }
     return this.getOptions().headers || {};
 };
 

@@ -160,5 +160,18 @@ describe('Fake window.fetch', function () {
 
             expect(fakeFetch.getBody()).toEqual(request.body);
         });
+
+        it('should return request headers', function () {
+            fakeFetch.install();
+            const headers = new Headers({
+                'X-foo': 'foo',
+                'X-bar': 'bar'
+            });
+            const request = new Request('https://foo.bar/path', { headers });
+
+            window.fetch(request);
+
+            expect(fakeFetch.getRequestHeaders()).toEqual(request.headers);
+        });
     });
 });
