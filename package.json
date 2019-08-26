@@ -2,11 +2,15 @@
   "name": "fake-fetch",
   "version": "2.2.0",
   "description": "fake window.fetch for tests",
-  "main": "index.js",
+  "main": "lib/fake-fetch.umd.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start && npm run lint",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "prepare": "microbundle -i ./index.js -o ./lib"
   },
+  "files": [
+    "lib/*"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/msn0/fake-fetch.git"
@@ -34,6 +38,7 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.1",
     "karma-mocha-reporter": "^2.2.5",
+    "microbundle": "^0.11.0",
     "puppeteer": "^1.12.1"
   }
 }
