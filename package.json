@@ -1,6 +1,6 @@
 {
   "name": "fake-fetch",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "fake window.fetch for tests",
   "main": "lib/fake-fetch.umd.js",
   "scripts": {
